@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>02-慕梅-点击盒子显示姓名</title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            width:200px;
+            height:200px;
+            background-color:pink;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+       oBox=document.getElementById("box");
+       oBox.onclick=function(){
+           oBox.innerHTML="慕梅";
+       }
+    </script>  
+</body>

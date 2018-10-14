@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作业</title>
+    <style>
+        body {
+            font-family: "Microsoft YaHei", serif;
+        }
+
+        body, dl, dd, p, h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+        }
+
+        ol,ul,li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        img {
+            border: none;
+        }
+        #wrap{
+            display: none;
+            position: relative;
+            border: 1px dashed rebeccapurple;
+            margin: 20px auto;
+        }
+        #box{
+            display: none;
+            position: relative;
+            border: 1px dashed rebeccapurple;
+            margin: 20px auto;
+        }
+        #box div {
+            position: absolute;
+            float: left;
+            width: 50px;
+            height: 50px;
+            background-color: aqua;
+            font-size: 15px;
+            text-align: center;
+            line-height: 50px;
+            vertical-align: middle;
+        }
+        input{
+            width: 100px;
+            height: 25px;
+        }
+        #wrap div{
+            position: absolute;
+            float: left;
+            width: 50px;
+            height: 50px;
+            background-color: aqua;
+            font-size: 15px;
+            text-align: center;
+            line-height: 50px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap"></div>
+    <div id="box"></div>
+    <input type="text" id="inp" placeholder="请输入数字">
+    <button id="btn">确定</button>
+    <script>
+        let aWrap = document.getElementById("wrap");
+            aBox = document.getElementById("box");
+            aInp = document.getElementById("inp");
+            aBtn = document.getElementById("btn");
+            ahtm = "";
+            bhtm = "";
+        aBtn.onclick = function () {
+            aWrap.style.display = "block";
+            aBox.style.display = "block";
+            let num = aInp.value/1;
+                mid = 0;
+                //判断奇偶数
+                if ( num & 1 ){
+                    mid = ( num-1 )/2;
+                } else {
+                    mid = num/2;
+                }
+            for (let i = 0; i <= num; i++) {
+                //计算宽高
+                aWrap.style.width = `${ ( num+1 )*50 }px`;
+                aWrap.style.height = `${ ( mid+1 )*50 }px`;
+                aBox.style.width = `${ ( num+1 )*50 }px`;
+                aBox.style.height = `${ ( mid+1 )*50 }px`;
+                if ( i <= mid ){
+                    ahtm += `<div style="top: ${ i*50 }px;left: ${ i*50 }px">${ i }</div>`;
+                    bhtm += `<div style="bottom: ${ i*50 }px;left: ${ i*50 }px">${ i }</div>`;
+                }else {
+                    ahtm += `<div style="top: ${ (num-i)*50 }px;left: ${ i*50 }px">${ i }</div>`;
+                    bhtm += `<div style="bottom: ${ (num-i)*50 }px;left: ${ i*50 }px">${ i }</div>`;
+                }
+                console.log( typeof num );
+                console.log( typeof mid );
+                console.log( mid );
+                console.log( i );
+            }
+            aWrap.innerHTML = ahtm;
+            aBox.innerHTML = bhtm;
+        }
+
+    </script>
+</body>
+</html>
