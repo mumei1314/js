@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>11上下尖括号-慕梅</title>
+    <style>
+        body{margin:0;padding:0;}
+        #wrap{
+            margin:20px auto;
+        }
+        .top{
+            margin-bottom:10px;
+        }
+        input{
+            margin-right:10px;           
+        }
+        #up,#down{
+            border:1px dashed #999;                                  
+        }
+        #up{
+            margin-bottom:50px;
+        }
+        #up div,#down div{
+            float:left;
+            width:50px;
+            height:50px;
+            background-color:#abcdef;
+            font-size:20px;
+            line-height:50px;
+            text-align:center;
+            font-weight:bold;
+        }
+              
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="top">
+            <input type="text" value="6">
+            <button>确定</button>
+        </div>
+        <div id="up"></div>
+        <div id="down"></div>
+    </div>
+    <script>
+       let oIn=document.getElementsByTagName("input")[0];
+       let oBut=document.getElementsByTagName("button")[0];
+       let num=6;             
+       let mid;
+       let oWrap = document.getElementById("wrap");
+       let oUp = document.getElementById("up");
+       let oDown = document.getElementById("down");
+       let HTML1 = "",HTML2 = "";
+
+        //计算得出wrap的宽高
+        function cal(num){
+            if( num % 2 ){
+            mid = (num-1)/2;
+            }else{
+                mid = num/2;
+            }
+            oWrap.style.width = (num+1)*50+"px";
+            oUp.style.width = (num+1)*50+"px";
+            oDown.style.width = (num+1)*50+"px";
+            oUp.style.height = (mid+1)*50+"px";
+            oDown.style.height = (mid+1)*50+"px";
+            for(let i=0;i<=num;i++){
+                let x = mid - (i<=mid?i:num-i);
+                let y = i<=mid?i:num-i;
+                HTML1 += `<div style="margin-top:${x*50}px;">${i}</div>`;
+                HTML2 += `<div style="margin-top:${y*50}px;">${i}</div>`;
+            }
+            oUp.innerHTML = HTML1;
+            oDown.innerHTML = HTML2;
+        }
+        cal(6);
+        oBut.onclick=function(){
+           HTML1 = "";
+           HTML2 = "";
+           num=Number(oIn.value);
+           cal(num);
+       } 
+    </script>
+</body>
